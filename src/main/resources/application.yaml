@@ -1,59 +1,3 @@
-#server:
-#  port: 8080
-#
-#spring:
-#  application:
-#    name: Spring Profiles
-#
-#  flyway:
-#    baselineOnMigrate: true
-#    enabled: true
-#
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQL8Dialect
-#        temp:
-#          use_jdbc_metadata_defaults: true
-#
-#tenants:
-#  configurations:
-#    uhf:
-#      url: ${TENANT_UHF_DB_URL}
-#      username: ${DB_USERNAME}
-#      password: ${DB_PASSWORD}
-#      driverClassName: com.mysql.cj.jdbc.Driver
-#
-#    netwell:
-#      url: ${TENANT_NETWELL_DB_URL}
-#      username: ${DB_USERNAME}
-#      password: ${DB_PASSWORD}
-#      driverClassName: com.mysql.cj.jdbc.Driver
-#
-#    innovation:
-#      url: ${TENANT_INNOVATION_DB_URL}
-#      username: ${DB_USERNAME}
-#      password: ${DB_PASSWORD}
-#      driverClassName: com.mysql.cj.jdbc.Driver
-#
-#    aec:
-#      url: ${TENANT_AEC_DB_URL}
-#      username: ${DB_USERNAME}
-#      password: ${DB_PASSWORD}
-#      driverClassName: com.mysql.cj.jdbc.Driver
-#
-#    ichra:
-#      url: ${TENANT_ICHRA_DB_URL}
-#      username: ${DB_USERNAME}
-#      password: ${DB_PASSWORD}
-#      driverClassName: com.mysql.cj.jdbc.Driver
-#
-#jwt:
-#  secret:  ${JWT_SECRET}
-
-
 server:
   port: 8080
 
@@ -64,44 +8,100 @@ spring:
   flyway:
     baselineOnMigrate: true
     enabled: true
+
   jpa:
     hibernate:
-      ddl-auto: update # <-- this is your "spring.jpa.hibernate.ddl-auto=update"
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         temp:
           use_jdbc_metadata_defaults: true
+
 tenants:
   configurations:
     uhf:
-      url: jdbc:mysql://localhost:3306/sd
-      username: root
-      password: root
+      url: ${TENANT_UHF_DB_URL}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
+
     netwell:
-      url: jdbc:mysql://localhost:3306/sd1
-      username: root
-      password: root
+      url: ${TENANT_NETWELL_DB_URL}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
+
     innovation:
-      url: jdbc:mysql://localhost:3306/sd2
-      username: root
-      password: root
+      url: ${TENANT_INNOVATION_DB_URL}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
+
     aec:
-      url: jdbc:mysql://localhost:3306/sd3?&useSSL=false
-      username: root
-      password: root
+      url: ${TENANT_AEC_DB_URL}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
 
     ichra:
-      url: jdbc:mysql://localhost:3306/sd4
-      username: root
-      password: root
+      url: ${TENANT_ICHRA_DB_URL}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
+
 jwt:
-  secret: silentboy
+  secret:  ${JWT_SECRET}
+
+
+#server:
+#  port: 8080
+#
+#spring:
+#  application:
+#    name: Spring Profiles
+#
+#  flyway:
+#    baselineOnMigrate: true
+#    enabled: true
+#  jpa:
+#    hibernate:
+#      ddl-auto: update # <-- this is your "spring.jpa.hibernate.ddl-auto=update"
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#        temp:
+#          use_jdbc_metadata_defaults: true
+#tenants:
+#  configurations:
+#    uhf:
+#      url: jdbc:mysql://localhost:3306/sd
+#      username: root
+#      password: root
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#    netwell:
+#      url: jdbc:mysql://localhost:3306/sd1
+#      username: root
+#      password: root
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#    innovation:
+#      url: jdbc:mysql://localhost:3306/sd2
+#      username: root
+#      password: root
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#    aec:
+#      url: jdbc:mysql://localhost:3306/sd3?&useSSL=false
+#      username: root
+#      password: root
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#
+#    ichra:
+#      url: jdbc:mysql://localhost:3306/sd4
+#      username: root
+#      password: root
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#jwt:
+#  secret: silentboy
 #
 #    #----- Agent userpool details--------------
 #
