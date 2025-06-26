@@ -5,6 +5,11 @@ spring:
   application:
     name: Spring Profiles
 
+  # ❌ disable default JPA EntityManagerFactory
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
   flyway:
     baselineOnMigrate: true
     enabled: true
@@ -25,25 +30,21 @@ tenants:
       username: ${DB_USERNAME}
       password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
-
     netwell:
       url: ${TENANT_NETWELL_DB_URL}
       username: ${DB_USERNAME}
       password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
-
     innovation:
       url: ${TENANT_INNOVATION_DB_URL}
       username: ${DB_USERNAME}
       password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
-
     aec:
       url: ${TENANT_AEC_DB_URL}
       username: ${DB_USERNAME}
       password: ${DB_PASSWORD}
       driverClassName: com.mysql.cj.jdbc.Driver
-
     ichra:
       url: ${TENANT_ICHRA_DB_URL}
       username: ${DB_USERNAME}
@@ -51,7 +52,64 @@ tenants:
       driverClassName: com.mysql.cj.jdbc.Driver
 
 jwt:
-  secret:  ${JWT_SECRET}
+  secret: ${JWT_SECRET}
+
+
+
+#server:
+#  port: 8080
+#
+#spring:
+#  application:
+#    name: Spring Profiles
+#
+#  flyway:
+#    baselineOnMigrate: true
+#    enabled: true
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#        temp:
+#          use_jdbc_metadata_defaults: true
+#
+#tenants:
+#  configurations:
+#    uhf:
+#      url: ${TENANT_UHF_DB_URL}
+#      username: ${DB_USERNAME}
+#      password: ${DB_PASSWORD}
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#
+#    netwell:
+#      url: ${TENANT_NETWELL_DB_URL}
+#      username: ${DB_USERNAME}
+#      password: ${DB_PASSWORD}
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#
+#    innovation:
+#      url: ${TENANT_INNOVATION_DB_URL}
+#      username: ${DB_USERNAME}
+#      password: ${DB_PASSWORD}
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#
+#    aec:
+#      url: ${TENANT_AEC_DB_URL}
+#      username: ${DB_USERNAME}
+#      password: ${DB_PASSWORD}
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#
+#    ichra:
+#      url: ${TENANT_ICHRA_DB_URL}
+#      username: ${DB_USERNAME}
+#      password: ${DB_PASSWORD}
+#      driverClassName: com.mysql.cj.jdbc.Driver
+#
+#jwt:
+#  secret:  ${JWT_SECRET}
 
 
 #server:
