@@ -51,7 +51,7 @@ tenants:
       driverClassName: com.mysql.cj.jdbc.Driver
 
 jwt:
-  secret: silentboy
+  secret:  ${JWT_SECRET}
 
 
 #server:
