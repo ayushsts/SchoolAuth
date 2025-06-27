@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @RestController
 @RequestMapping("/api/attendance")
 public class TeacherAttendanceController {
-
     @Autowired
     private TeacherAttendanceService attendanceService;
 

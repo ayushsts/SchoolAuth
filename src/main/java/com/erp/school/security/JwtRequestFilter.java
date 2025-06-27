@@ -2,6 +2,7 @@ package com.erp.school.security;
 
 
 
+import com.erp.school.tenant.TenantContext;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -42,6 +43,13 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		if(authHeader !=null && authHeader.startsWith("Bearer ")) {
 			jwt = authHeader.substring(7);
 			username=jwtUtil.extractUsername(jwt);
+			Claims claims = jwtUtil.getClaims(jwt);
+			System.out.println(claims);
+			String tenant = claims.get("tenant", String.class);
+			System.out.println(tenant);
+			if (tenant != null) {
+				TenantContext.setTenant(tenant);
+			}
 			System.out.println("Extracted Username: " + username);
 
 		}

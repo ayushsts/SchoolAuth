@@ -18,4 +18,8 @@ public class TenantInterceptor implements HandlerInterceptor {
         }
         return true;
     }
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        TenantContext.clear();  // Clear the tenant context to avoid leakage between requests.
+    }
 }

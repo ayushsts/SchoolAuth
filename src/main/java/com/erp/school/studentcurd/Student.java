@@ -1,8 +1,11 @@
 package com.erp.school.studentcurd;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -20,6 +23,8 @@ public class Student {
     private String address;
     private String mobile;
     private String parentRelation;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dob;
     private String currentClass;
     private String parentName;
     private String parentMobile;

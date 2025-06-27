@@ -2,6 +2,7 @@ package com.erp.school.studentcurd;
 
 
 import com.erp.school.model.Teacher;
+import com.erp.school.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,8 @@ public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
-
+    @Autowired
+    private TeacherRepository teacherRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -46,8 +48,27 @@ public class StudentService {
 
         return employee;
     }
+    public List<Student> getStudentsByClassAndTenant(String studentClass, String tenantId) {
+        return studentRepository.findByCurrentClassAndTenantId(studentClass, tenantId);
+    }
+
 
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
+
+    public Object getUserDetails(String role, Long id, String tenantId) {
+        if ("teacher".equalsIgnoreCase(role) || "admin".equalsIgnoreCase(role)) {
+            return teacherRepository.findById(id)
+                    .filter(t -> t.getTenantId().equals(tenantId))
+                    .orElse(null);
+        } else if ("student".equalsIgnoreCase(role)) {
+            return studentRepository.findById(id)
+                    .filter(s -> s.getTenantId().equals(tenantId))
+                    .orElse(null);
+        } else {
+            return "Invalid role";
+        }
+    }
+
 }
